@@ -1,0 +1,51 @@
+import axios from "axios";
+import { useState } from "react";
+
+function Login() {
+  //   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  //   const [age, setAge] = useState("");
+  const [password, setPassword] = useState("");
+  const [succesful, setSuccesfully] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("http://localhost:2468/users/login", {
+        email,
+        password,
+      });
+      const token = res.data;
+      localStorage.setItem("token", token);
+      setSuccesfully("User logged in succesfully");
+    } catch (err) {
+      console.error(err.message);
+      setError(err, message);
+    }
+  };
+
+  return (
+    <div>
+      <h1>{succesful ? succesful : error}</h1>
+      <form onSubmit={handleSubmit}>
+        <br /> <br />
+        <input
+          type="email"
+          placeholder="Enter Your email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <br /> <br />
+        <input
+          type="password"
+          placeholder="Enter Your password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <br /> <br />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+}
+
+export default Login;
