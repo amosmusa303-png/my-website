@@ -7,7 +7,7 @@ const {
   getUserbyId,
   deleteUser,
   deleteUserById,
-} = require("../controller/userController");
+} = require("../Controller/userController");
 const { authenticateToken, isAdmin } = require("../middleware/authenticate");
 //const { model } = require("mongoose");
 const router = express.Router();
@@ -20,7 +20,4 @@ router.delete("/delete-user", authenticateToken, deleteUser);
 router.delete("/:id", authenticateToken, deleteUserById);
 router.post("/login", loginUser);
 
-
 module.exports = router;
-
- 

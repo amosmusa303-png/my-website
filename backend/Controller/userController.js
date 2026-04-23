@@ -1,4 +1,4 @@
-const User = require("../MODELS/User");
+const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
@@ -29,9 +29,13 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
 
-  const isPasswordValid = await bcrypt.compare(password, user.password);
-  if (!isPasswordValid)
+  if (!user) {
     return res.status(400).json({ message: "Invalid credentials" });
+  }
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+  if (!isPasswordValid) {
+    return res.status(400).json({ message: "Invalid credentials" });
+  }
 
   const token = jwt.sign(
     { userId: user._id, userEmail: user.email, userRole: user.userRole },
@@ -40,6 +44,7 @@ const loginUser = async (req, res) => {
   );
   res.json(token);
 };
+
 // const userEmail = reg.body.email;
 // const userPassword = req.body.password;
 // const user = await User.findOne({ email: userEmail, password: userPassword });
@@ -50,9 +55,8 @@ const getUsers = async (req, res) => {
   try {
     const users = await User.find();
     res.status(200).json(users);
-    
   } catch (err) {
-    res.status(500).json({ message: "A err occured while geting users" });
+    res.status(500).json({ message: "A err occured while getting users" });
     console.log("the error:", err);
   }
 };
