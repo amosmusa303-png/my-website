@@ -22,7 +22,7 @@ const PORT = 2468;
 
 //Connect to database or MongoDB // localhost
 mongoose
-  .connect(process.env.MONGODB_URL)
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.log("MongoDB connection error:", err));
 
