@@ -34,9 +34,15 @@ function Profile() {
       <h1>Shabah Profile</h1>
 
       <ul>
-        <p><b>Name: {currentUser.name}</b> </p>
-        <p><b>Age: {currentUser.age}</b> </p>
-        <p><b>Email: {currentUser.email}</p>
+        <p>
+          <b>Name: {currentUser.name}</b>{" "}
+        </p>
+        <p>
+          <b>Age: {currentUser.age}</b>{" "}
+        </p>
+        <p>
+          <b>Email: {currentUser.email}</b>
+        </p>
       </ul>
     </div>
   );
