@@ -16,11 +16,14 @@ function Profile() {
   }, [token]);
   useEffect(() => {
     const getUser = () => {
-      const res = axios.get(`http://localhost:2468/users/${userId})`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
+      const res = axios.get(
+        "https://my-website-bcss.onrender.com/users/${userId})",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      });
+      );
       setCurrentUser(res.data);
     };
     getUser();
@@ -31,9 +34,9 @@ function Profile() {
       <h1>Shabah Profile</h1>
 
       <ul>
-        <li>Name: {currentUser} </li>
-        <li>Age: {currentUser} </li>
-        <li>Email: {currentUser} </li>
+        <p><b>Name: {currentUser.name}</b> </p>
+        <p><b>Age: {currentUser.age}</b> </p>
+        <p><b>Email: {currentUser.email}</p>
       </ul>
     </div>
   );

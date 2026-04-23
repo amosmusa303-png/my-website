@@ -12,7 +12,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:2468/users/create", {
+      await axios.post("https://my-website-bcss.onrender.com/users/create", {
         name,
         email,
         age,

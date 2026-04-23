@@ -5,14 +5,14 @@ import "./App.css";
 // import Welcome from "./components/Welcome";
 // import Counter from "./components/Counter";
 // import LoginMessage from "./components/LoginMessage";
-import Contact from "./components/contact";
-import Home from "./components/home";
-import About from "./components/about";
+import Contact from "./components/Contact";
+import Home from "./components/Home";
+import About from "./components/About";
 import UserProfile from "./components/UserProfile";
 import Navbar from "./components/Navbar";
 import Signup from "./components/Signup";
-import Login from "./components/login";
-import Profile from "./components/profile";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
 
 function App() {
   // const logged = true;
